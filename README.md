@@ -8,6 +8,8 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 [Load the model](#load)
 
+[Say Hello Taipy!](#hi)
+
 [Create a chat interface with TaipyGUI](#create)
 
 [Mistral AI Chatbot🤖 with Advanced Layout](#bonus)
@@ -16,7 +18,13 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 
 ## Introduction
-<a name="intro"></a>Mistral 7B is a super-smart opensource language model with 7 billion parameters! It beats the best 13B model, Llama 2, in all tests and even outperforms the powerful 34B model, Llama 1, in reasoning, math, and code generation. 
+Mistral 7B is a super-smart language model with 7 billion parameters! It beats the best 13B model, Llama 2, in all tests and even outperforms the powerful 34B model, Llama 1, in reasoning, math, and code generation. How? Mistral 7B uses smart tricks like grouped-query attention (GQA) for quick thinking and sliding window attention (SWA) to handle all sorts of text lengths without slowing down.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9dmy24ao6nnz66w5qc1x.PNG)
+
+Source: [Mistral.AI Docs](https://mistral.ai/news/announcing-mistral-7b/)
+
+And there's more! Mistral AI Team fine-tuned Mistral 7B for specific tasks with Mistral 7B – Instruct. It not only outshines Llama 2 13B in chat but also rocks both human and automated tests. Best part? Mistral 7B – was released under the Apache 2.0 license. 
 
 ## Download GGUF files using ctransformers <a name="download"></a>
 
@@ -64,6 +72,42 @@ while turn < ask:
     user = input("Enter your message: ")
     print(llm(user))
 ```
+
+## Say Hello Taipy! <a name="hi"></a>
+
+Taipy is a Python open-source library that makes it simple to create data-driven web applications. It takes care of both the visible part(Frontend) and the behind-the-scenes(Backend) operations. Its goal is to speed up the process of developing applications, from the early design stages to having a fully functional product ready for use.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k24u6ko4tkjffice6thz.gif)
+
+Source: [Taipy Docs](https://docs.taipy.io/en/latest/)
+
+**Requirement:** Python 3.8 or later on Linux, Windows, and Mac. 
+
+**Installing Taipy:** Open up a terminal and run the following command, which will install Taipy with all its dependencies.
+
+```bash
+pip install taipy
+```
+_You may run into trouble installing the library, you can try using a more stable python version like v3.11_
+
+We're set, let say hello to Taipy...
+
+```python
+# import the library
+from taipy import Gui
+
+hello = "# Hello Taipy!" 
+
+# run the gui
+Gui(hello).run()
+```
+
+Save the code as a Python file: e.g., `hi_taipy.py`. 
+Run the code and wait for the client link `http://127.0.0.1:5000` to display and pop up in your browser. 
+You can change the port if you want to run multiple servers at the same time with `Gui(...).run(port=xxxx)`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6w2h2jryumg8kumid3ms.PNG)
+
 
 ## Create a chat interface with TaipyGUI: <a name="create"></a>
 ![chat_wizard](https://github.com/jrshittu/build_with_taipy/assets/110542235/22d58387-013f-4286-a19e-30e4aa8c3772)
