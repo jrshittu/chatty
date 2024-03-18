@@ -6,10 +6,19 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 [Download GGUF files using ctransformers](#download)
 
+[Load the model](#load)
+
+[Create a chat interface with TaipyGUI](#create)
+
+[Mistral AI Chatbot🤖 with Advanced Layout](#bonus)
+
+[Conclusion](#conc)
+
+
 ## Introduction
 <a name="intro"></a>Mistral 7B is a super-smart opensource language model with 7 billion parameters! It beats the best 13B model, Llama 2, in all tests and even outperforms the powerful 34B model, Llama 1, in reasoning, math, and code generation. 
 
-### Download GGUF files using ctransformers <a name="download"></a>
+## Download GGUF files using ctransformers <a name="download"></a>
 
 **Step 1: Install ctransformers**
 
@@ -36,7 +45,7 @@ CT_METAL=1 pip install ctransformers --no-binary ctransformers
 pip install langchain
 ```
 
-**Step 3: Load the model:**
+**Step 3: Load the model:** <a name="load"></a>
 ![terminal load model](https://github.com/jrshittu/build_with_taipy/assets/110542235/bc6943a9-1512-4480-81c2-33ee3ceedb7c)
 
 Now, run the code below to download and send a prompt to the model. Make sure to free up space on your computer and connect to a good internet connection.
@@ -56,7 +65,7 @@ while turn < ask:
     print(llm(user))
 ```
 
-### Step 4: Create a chat interface with TaipyGUI:
+### Step 4: Create a chat interface with TaipyGUI: <a name="create"></a>
 ![chat_wizard](https://github.com/jrshittu/build_with_taipy/assets/110542235/22d58387-013f-4286-a19e-30e4aa8c3772)
 
 
@@ -140,7 +149,7 @@ MistralAI: <br /> <|{response}|>
 Gui(page).run(debug=True)
 ```
 
-## Mistral AI Chatbot🤖 with Advanced Layout
+## Bonus: Mistral AI Chatbot🤖 with Advanced Layout <a name="bonus"></a>
 ![Screenshot 2024-03-18 172408](https://github.com/jrshittu/build_with_taipy/assets/110542235/8c270fc1-a2fe-4872-a324-6e436703afd5)
 
 1. Update the `chat` function.
@@ -259,5 +268,5 @@ page = """
 
 Gui(page).run(debug=True, port=5001)
 ```
-## Conclusion
+## Conclusion <a name="conc"></a>
 In conclusion, this article demonstrated how to build a simple chatbot using the Taipy GUI library and the Mistral-7B-Instruct-v0.1-GGUF language model from the ctransformers library. The code provided shows how to load the language model, generate responses to user prompts, update the conversation history, and clear the conversation history. The chatbot's UI, built using the Taipy GUI library, provides a user-friendly interface for interacting with the chatbot. Overall, this article provides a useful starting point for building more sophisticated chatbots using these Taipy.
