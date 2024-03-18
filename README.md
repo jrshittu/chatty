@@ -109,32 +109,32 @@ You can change the port if you want to run multiple servers at the same time wit
 ## Create a chat interface with TaipyGUI: <a name="create"></a>
 Since we are familiar with Taipy, Let's get our hands dirty and build our chat interface. 
 
-Step 1: Import the AutoModelForCausalLM class from the ctransformers library
+**Step 1**: Import the AutoModelForCausalLM class from the ctransformers library
 
 In this step, we import the AutoModelForCausalLM class from the ctransformers library, which is used for generating text using pre-trained language models.
 ```python
 from ctransformers import AutoModelForCausalLM
 ```
-Step 2: Import the Taipy GUI library
+**Step 2:** Import the Taipy GUI library
 
 In this step, we import the Taipy GUI library, which is used for building the user interface for our chatbot.
 ```python
 from taipy.gui import Gui, notify
 ```
-Step 3: Load the Mistral-7B-Instruct-v0.1-GGUF model
+**Step 3:** Load the Mistral-7B-Instruct-v0.1-GGUF model
 
 In this step, we load the Mistral-7B-Instruct-v0.1-GGUF model, which is a pre-trained language model that we will use to generate text. We set the `gpu_layers` parameter to 0 because we don't have GPU acceleration available on our current system.
 ```python
 llm = AutoModelForCausalLM.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.1-GGUF", model_file="mistral-7b-instruct-v0.1.Q4_K_M.gguf", model_type="mistral", gpu_layers=0)
 ```
-Step 4: Initialize the prompt and response variables
+**Step 4:** Initialize the prompt and response variables
 
 In this step, we initialize the `prompt` and `response` variables as empty strings.
 ```python
 prompt = ""
 response = ""
 ```
-Step 5: Define the `chat` function
+**Step 5:** Define the `chat` function
 
 In this step, we define the `chat` function, which is called when the user clicks the "Chat" button in the user interface. This function takes the current state of the GUI as an input, generates text using the pre-trained language model based on the user's prompt, and updates the response variable in the state.
 ```python
@@ -142,7 +142,7 @@ def chat(state):
     notify(state, 'info', 'Thinking...')
     state.response = llm(state.prompt)
 ```
-Step 6: Define the user interface
+**Step 6:** Define the user interface
 
 Time to define the user interface for our chatbot using the Taipy GUI library. The user interface consists of an input field where the user can enter a prompt, a "Chat" button that triggers the `chat` function, and a display area where the chatbot's response is shown.
 ```python
@@ -153,7 +153,7 @@ Enter Prompt: <|{prompt}|input|> <br />
 MistralAI: <br /> <|{response}|>
 """
 ```
-Step 7: Run the Taipy GUI application
+**Step 7:** Run the Taipy GUI application
 
 Now let's run the Taipy GUI application using the `run` method.
 ```python
@@ -194,7 +194,7 @@ Gui(page).run(debug=True)
 ## Bonus: Mistral AI Chatbot🤖 with Advanced Layout <a name="bonus"></a>
 ![Screenshot 2024-03-18 172408](https://github.com/jrshittu/build_with_taipy/assets/110542235/8c270fc1-a2fe-4872-a324-6e436703afd5)
 
-1. Update the `chat` function.
+**Step 1**. Update the `chat` function.
 ```python
 def chat(state):
     # Notify the user that the chatbot is thinking
@@ -217,14 +217,14 @@ def chat(state):
     notify(state, 'info', 'Response received!')
 ```
 
-2.  Add `clear_conversation` function to clear the conversation history. The function sets the `state.conversation` object to a new dictionary with a single key-value pair, where the key is "Conversation" and the value is an empty list. This effectively clears the conversation history, as the `state.conversation` object is now an empty dictionary with a single key-value pair containing an empty list. The updated `state.conversation` object will be reflected in the chatbot UI, showing an empty conversation history.
+**Step 2.**  Add `clear_conversation` function to clear the conversation history. The function sets the `state.conversation` object to a new dictionary with a single key-value pair, where the key is "Conversation" and the value is an empty list. This effectively clears the conversation history, as the `state.conversation` object is now an empty dictionary with a single key-value pair containing an empty list. The updated `state.conversation` object will be reflected in the chatbot UI, showing an empty conversation history.
 
 ```python
 def clear_conversation(state):
     state.conversation = {"Conversation": []}
 ```
 
-3. Define the layout of the user interface for the Chatbot so that we have two columns: a sidebar with a width of 300 pixels, and a main content area. Hence attach `clear_conversation` to the `New chat` button.
+**Step 3.** Define the layout of the user interface for the Chatbot so that we have two columns: a sidebar with a width of 300 pixels, and a main content area. Hence attach `clear_conversation` to the `New chat` button.
 
 ```python
 page = """
