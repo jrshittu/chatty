@@ -6,6 +6,7 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 [Download GGUF files using ctransformers](#download)
 
+## Introduction
 <a name="intro"></a>Mistral 7B is a super-smart opensource language model with 7 billion parameters! It beats the best 13B model, Llama 2, in all tests and even outperforms the powerful 34B model, Llama 1, in reasoning, math, and code generation. 
 
 ### Download GGUF files using ctransformers <a name="download"></a>
