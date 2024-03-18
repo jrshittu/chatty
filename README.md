@@ -73,7 +73,6 @@ while turn < ask:
 ![terminal load model](https://github.com/jrshittu/build_with_taipy/assets/110542235/bc6943a9-1512-4480-81c2-33ee3ceedb7c)
 
 ## Say Hello Taipy! <a name="hi"></a>
-
 Taipy is a Python open-source library that makes it simple to create data-driven web applications. It takes care of both the visible part(Frontend) and the behind-the-scenes(Backend) operations. Its goal is to speed up the process of developing applications, from the early design stages to having a fully functional product ready for use.
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k24u6ko4tkjffice6thz.gif)
@@ -107,8 +106,7 @@ You can change the port if you want to run multiple servers at the same time wit
 
 
 ## Create a chat interface with TaipyGUI: <a name="create"></a>
-![chat_wizard](https://github.com/jrshittu/build_with_taipy/assets/110542235/22d58387-013f-4286-a19e-30e4aa8c3772)
-
+Since we are familiar with Taipy, Let's get our hands dirty and build our chat interface. 
 
 Step 1: Import the AutoModelForCausalLM class from the ctransformers library
 
@@ -160,6 +158,8 @@ Now let's run the Taipy GUI application using the `run` method.
 ```python
 Gui(page).run(debug=True)
 ```
+**Chat Interface**
+![chat_wizard](https://github.com/jrshittu/build_with_taipy/assets/110542235/22d58387-013f-4286-a19e-30e4aa8c3772)
 
 **Full Code**
 ```python
