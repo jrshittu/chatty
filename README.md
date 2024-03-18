@@ -88,8 +88,6 @@ Source: [Taipy Docs](https://docs.taipy.io/en/latest/)
 ```bash
 pip install taipy
 ```
-_You may run into trouble installing the library, you can try using a more stable python version like v3.11_
-
 We're set, let say hello to Taipy...
 
 ```python
