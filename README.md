@@ -173,7 +173,7 @@ from taipy.gui import Gui, notify
 # load Mistral-7B-Instruct-v0.1-GGUF, Set gpu_layers to the number of layers to offload to GPU. The value is set to 0 because no GPU acceleration is available on my current system.
 llm = AutoModelForCausalLM.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.1-GGUF", model_file="mistral-7b-instruct-v0.1.Q4_K_M.gguf", model_type="mistral", gpu_layers=0)
 
-# call the model to generate text, starting with the prompt "AI is going to"
+# initialize the `prompt` and `response` variables as empty strings.
 prompt = ""
 response = ""
 
@@ -194,7 +194,18 @@ Gui(page).run(debug=True)
 ## Bonus: Mistral AI Chatbot🤖 with Advanced Layout <a name="bonus"></a>
 ![Screenshot 2024-03-18 172408](https://github.com/jrshittu/build_with_taipy/assets/110542235/8c270fc1-a2fe-4872-a324-6e436703afd5)
 
-**Step 1**. Update the `chat` function.
+**Step 1**. In this step, we initialize the `prompt` and `response` and the `conversation`.
+
+```python
+prompt = ""
+response = ""
+conversation = {
+    "Conversation": ["Hello", "Hi there!   What would you like to talk about today?"]
+}
+```
+
+
+**Step 2**. Update the `chat` function.
 ```python
 def chat(state):
     # Notify the user that the chatbot is thinking
@@ -217,14 +228,14 @@ def chat(state):
     notify(state, 'info', 'Response received!')
 ```
 
-**Step 2.**  Add `clear_conversation` function to clear the conversation history. The function sets the `state.conversation` object to a new dictionary with a single key-value pair, where the key is "Conversation" and the value is an empty list. This effectively clears the conversation history, as the `state.conversation` object is now an empty dictionary with a single key-value pair containing an empty list. The updated `state.conversation` object will be reflected in the chatbot UI, showing an empty conversation history.
+**Step 3.**  Add `clear_conversation` function to clear the conversation history. The function sets the `state.conversation` object to a new dictionary with a single key-value pair, where the key is "Conversation" and the value is an empty list. This effectively clears the conversation history, as the `state.conversation` object is now an empty dictionary with a single key-value pair containing an empty list. The updated `state.conversation` object will be reflected in the chatbot UI, showing an empty conversation history.
 
 ```python
 def clear_conversation(state):
     state.conversation = {"Conversation": []}
 ```
 
-**Step 3.** Define the layout of the user interface for the Chatbot so that we have two columns: a sidebar with a width of 300 pixels, and a main content area. Hence attach `clear_conversation` to the `New chat` button.
+**Step 4.** Define the layout of the user interface for the Chatbot so that we have two columns: a sidebar with a width of 300 pixels, and a main content area. Hence attach `clear_conversation` to the `New chat` button.
 
 ```python
 page = """
