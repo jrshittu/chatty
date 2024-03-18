@@ -45,7 +45,7 @@ CT_METAL=1 pip install ctransformers --no-binary ctransformers
 pip install langchain
 ```
 
-**Step 3: Load the model:** <a name="load"></a>
+## Load the model: <a name="load"></a>
 ![terminal load model](https://github.com/jrshittu/build_with_taipy/assets/110542235/bc6943a9-1512-4480-81c2-33ee3ceedb7c)
 
 Now, run the code below to download and send a prompt to the model. Make sure to free up space on your computer and connect to a good internet connection.
@@ -65,7 +65,7 @@ while turn < ask:
     print(llm(user))
 ```
 
-### Step 4: Create a chat interface with TaipyGUI: <a name="create"></a>
+## Create a chat interface with TaipyGUI: <a name="create"></a>
 ![chat_wizard](https://github.com/jrshittu/build_with_taipy/assets/110542235/22d58387-013f-4286-a19e-30e4aa8c3772)
 
 
