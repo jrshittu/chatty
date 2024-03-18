@@ -1,4 +1,4 @@
-## Chatbot Wizard With Mistral AI🤖
+## Creating a Chatbot Wizard With Mistral AI🤖
 In this technical article, we will learn how to build a simple chatbot using the Taipy GUI library and the Mistral-7B-Instruct-v0.1-GGUF language model from the ctransformers library. We will walk through the process of loading the language model, generating responses to user prompts, updating the conversation history, and clearing the conversation history. By the end of this article, we will have a basic understanding of how to build a chatbot using these tools.
 
 ## Contents
