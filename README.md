@@ -70,6 +70,7 @@ while turn < ask:
     user = input("Enter your message: ")
     print(llm(user))
 ```
+**Terminal Output**
 ![terminal load model](https://github.com/jrshittu/build_with_taipy/assets/110542235/bc6943a9-1512-4480-81c2-33ee3ceedb7c)
 
 ## Say Hello Taipy! <a name="hi"></a>
