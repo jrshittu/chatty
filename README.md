@@ -54,9 +54,7 @@ pip install langchain
 ```
 
 ## Load the model: <a name="load"></a>
-![terminal load model](https://github.com/jrshittu/build_with_taipy/assets/110542235/bc6943a9-1512-4480-81c2-33ee3ceedb7c)
-
-Now, run the code below to download and send a prompt to the model. Make sure to free up space on your computer and connect to a good internet connection.
+All set? let's run the code below to download and send a prompt to the model. Make sure to free up space on your computer and connect to a good internet connection.
 
 ```python
 # import the AutoModelForCausalLM class from the ctransformers library
@@ -72,6 +70,7 @@ while turn < ask:
     user = input("Enter your message: ")
     print(llm(user))
 ```
+![terminal load model](https://github.com/jrshittu/build_with_taipy/assets/110542235/bc6943a9-1512-4480-81c2-33ee3ceedb7c)
 
 ## Say Hello Taipy! <a name="hi"></a>
 
