@@ -307,7 +307,7 @@ def clear_conversation(state):
 page = """
 <|layout|columns=300px 1|
 <|part|render=True|class_name=sidebar|
-# Taipy **Chat**{: .color-primary} # {: .logo-text}
+# Chatbot **Wizard**{: .color-primary} # {: .logo-text}
 <|New Chat|button|class_name=fullwidth plain|on_action=clear_conversation|>
 ### History
 |>
@@ -327,7 +327,8 @@ Gui(page).run(debug=True, port=5001)
 ```
 
 ## Styling With CSS <a name="style"></a>
-Now, let's style our chat ui by floating the response the left and the prompt to the right hand side. 
+Now, let's style our chatui by floating the response the left and the prompt to the right hand side. 
+
 **Step 1**: Create a CSS file with the same title as the python file and save it in the same directory.
 ```css
 .mistral_mssg td {
@@ -355,6 +356,30 @@ Now, let's style our chat ui by floating the response the left and the prompt to
   font-size: medium;
 }
 ```
+
+**Step 2:** Create the `style_conv` function, a callback function that is used to apply styles to the conversation history table in the Taipy GUI. It takes three arguments: `state`, `idx`, and `row`.
+
+The `state` argument is a dictionary that contains the current state of the GUI, including the conversation history. The `idx` argument is the index of the current row in the table, and the `row` argument is the index of the current column in the table.
+
+The function checks the value of the `idx` argument to determine which style to apply to the current row. If `idx` is `None`, the function returns `None`, indicating that no style should be applied.
+
+If `idx` is an even number, the function returns the string `"user_mssg"`, which corresponds to the CSS class for the user's prompts. If `idx` is an odd number, the function returns the string `"mistral_mssg"`, which corresponds to the CSS class for the chatbot's responses.
+
+Here is the code for the `style_conv` function:
+```
+def style_conv(state, idx: int, row: int) -> str:
+    if idx is None:
+        return None
+    elif idx % 2 == 0:
+        return "user_mssg"  # return user_mssg style
+    else:
+        return "mistral_mssg"  # return mistral_mssg style
+```
+To use the `style_conv` function in the Taipy GUI, we need to pass it as the value of the `style` attribute in the `table` element. For example:
+```
+<|{conversation}|table|style=style_conv|show_all|width=100%|rebuild|>
+```
+
 
 ## Conclusion <a name="conc"></a>
 In conclusion, this article demonstrated how to build a simple chatbot using the Taipy GUI library and the Mistral-7B-Instruct-v0.1-GGUF language model from the ctransformers library. The code provided shows how to load the language model, generate responses to user prompts, update the conversation history, and clear the conversation history. The chatbot's UI, built using the Taipy GUI library, provides a user-friendly interface for interacting with the chatbot. Overall, this article provides a useful starting point for building more sophisticated chatbots using these Taipy.
