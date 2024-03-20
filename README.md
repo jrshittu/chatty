@@ -16,6 +16,8 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 [Mistral AI Chatbot🤖 with Advanced Layout](#bonus)
 
+[Styling With CSS](#style)
+
 [Conclusion](#conc)
 
 
@@ -193,7 +195,7 @@ MistralAI: <br /> <|{response}|>
 Gui(page).run(debug=True)
 ```
 
-## Bonus: Mistral AI Chatbot🤖 with Advanced Layout <a name="bonus"></a>
+## Mistral AI Chatbot🤖 with Advanced Layout <a name="bonus"></a>
 ![Screenshot 2024-03-18 172408](https://github.com/jrshittu/build_with_taipy/assets/110542235/8c270fc1-a2fe-4872-a324-6e436703afd5)
 
 **Step 1**. In this step, we initialize the `prompt` and `response` and the `conversation`.
@@ -323,5 +325,36 @@ page = """
 
 Gui(page).run(debug=True, port=5001)
 ```
+
+## Styling With CSS <a name="style"></a>
+Now, let's style our chat ui by floating the response the left and the prompt to the right hand side. 
+**Step 1**: Create a CSS file with the same title as the python file and save it in the same directory.
+```css
+.mistral_mssg td {
+  position: relative;
+  display: inline-block;
+  margin: 10px 10px;
+  padding: 20px;
+  background-color: #ff8c00;
+  border-radius: 20px;
+  max-width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: medium;
+}
+
+.user_mssg td {
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin: 10px 10px;
+  padding: 20px;
+  background-color: #9400D3;
+  border-radius: 20px;
+  max-width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: medium;
+}
+```
+
 ## Conclusion <a name="conc"></a>
 In conclusion, this article demonstrated how to build a simple chatbot using the Taipy GUI library and the Mistral-7B-Instruct-v0.1-GGUF language model from the ctransformers library. The code provided shows how to load the language model, generate responses to user prompts, update the conversation history, and clear the conversation history. The chatbot's UI, built using the Taipy GUI library, provides a user-friendly interface for interacting with the chatbot. Overall, this article provides a useful starting point for building more sophisticated chatbots using these Taipy.
