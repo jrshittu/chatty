@@ -307,7 +307,7 @@ def clear_conversation(state):
 page = """
 <|layout|columns=300px 1|
 <|part|render=True|class_name=sidebar|
-# Chatbot **Wizard**{: .color-primary} # {: .logo-text}
+# Chat **Wizard**{: .color-primary} # {: .logo-text}
 <|New Chat|button|class_name=fullwidth plain|on_action=clear_conversation|>
 ### History
 |>
@@ -327,7 +327,8 @@ Gui(page).run(debug=True, port=5001)
 ```
 
 ## Styling With CSS <a name="style"></a>
-Now, let's style our chatui by floating the response the left and the prompt to the right hand side. 
+Now, let's style our chat ui by floating the response the left and the prompt to the right hand side. 
+![chatty](https://github.com/jrshittu/chatty/assets/110542235/372bf3e7-3fed-44ff-a054-9830ff44aded)
 
 **Step 1**: Create a CSS file with the same title as the python file and save it in the same directory.
 ```css
