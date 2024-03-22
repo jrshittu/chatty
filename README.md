@@ -14,7 +14,7 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 [Create a chat interface with TaipyGUI](#create)
 
-[Mistral AI Chatbot🤖 with Advanced Layout](#bonus)
+[Mistral AI Chatbot🤖](#bonus)
 
 [Styling With CSS](#style)
 
@@ -195,10 +195,10 @@ MistralAI: <br /> <|{response}|>
 Gui(page).run(debug=True)
 ```
 
-## Mistral AI Chatbot🤖 with Advanced Layout <a name="bonus"></a>
-![Screenshot 2024-03-18 172408](https://github.com/jrshittu/build_with_taipy/assets/110542235/8c270fc1-a2fe-4872-a324-6e436703afd5)
+## Mistral AI Chatbot🤖 <a name="bonus"></a>
 
 **Step 1**. In this step, we initialize the `prompt` and `response` and the `conversation`.
+![taipee](https://github.com/jrshittu/chatty/assets/110542235/e417fabf-3003-4c33-afdd-274f899113e4)
 
 ```python
 prompt = ""
@@ -239,21 +239,19 @@ def clear_conversation(state):
     state.conversation = {"Conversation": []}
 ```
 
-**Step 4.** Define the layout of the user interface for the Chatbot so that we have two columns: a sidebar with a width of 300 pixels, and a main content area. Hence attach `clear_conversation` to the `New chat` button.
+**Step 4.** Define the layout of the user interface for the Chatbot, Add the logo Image and attach `clear_conversation` to the `New chat` button.
 
 ```python
 page = """
-<|layout|columns=300px 1|
-<|part|render=True|class_name=sidebar|
-# Taipy **Chat**{: .color-primary} # {: .logo-text}
-<|New Chat|button|class_name=fullwidth plain|on_action=clear_conversation|>
-### History
+<|layout|columns=1|
+<|part|class_name=card p2 mt1 mb2 flexy|
+<|taipy.png|image|width=110px|>
+# Chat **Wizard**{: .color-primary} # {: .logo-text}
 |>
-
 <|part|render=True|class_name=p2 align-item-bottom table|
 <|{conversation}|table|style=style_conv|show_all|width=100%|rebuild|>
 
-<|part|class_name=card mt1|
+<|part|class_name=card mt1 align-item-bottom table|
 <|{prompt}|input|label=Ask anything...|class_name=fullwidth|on_action=chat|>
 <|Send Prompt|button|class_name=plain mt1 fullwidth|on_action=chat|>
 |>
@@ -273,11 +271,11 @@ from taipy.gui import Gui, notify
 # load Mistral-7B-Instruct-v0.1-GGUF, Set gpu_layers to the number of layers to offload to GPU. The value is set to 0 because no GPU acceleration is available on my current system.
 llm = AutoModelForCausalLM.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.1-GGUF", model_file="mistral-7b-instruct-v0.1.Q4_K_M.gguf", model_type="mistral", gpu_layers=0)
 
-# call the model to generate text
+# initialize variables
 prompt = ""
 response = ""
 conversation = {
-    "Conversation": ["Hello", "Hi there!   What would you like to talk about today?"]
+    "Conversation": []
 }
 
 def chat(state):
@@ -304,18 +302,25 @@ def chat(state):
 def clear_conversation(state):
     state.conversation = {"Conversation": []}
 
-page = """
-<|layout|columns=300px 1|
-<|part|render=True|class_name=sidebar|
-# Chat **Wizard**{: .color-primary} # {: .logo-text}
-<|New Chat|button|class_name=fullwidth plain|on_action=clear_conversation|>
-### History
-|>
+def style_conv(state, idx: int, row: int) -> str:
+    if idx is None:
+        return None
+    elif idx % 2 == 0:
+        return "user_mssg" # return user_mssg style
+    else:
+        return "mistral_mssg" # return mistral_mssg style
 
+
+page = """
+<|layout|columns=1|
+<|part|class_name=card p2 mt1 mb2 flexy|
+<|taipy.png|image|width=110px|>
+# Chat **Wizard**{: .color-primary} # {: .logo-text}
+|>
 <|part|render=True|class_name=p2 align-item-bottom table|
 <|{conversation}|table|style=style_conv|show_all|width=100%|rebuild|>
 
-<|part|class_name=card mt1|
+<|part|class_name=card mt1 align-item-bottom table|
 <|{prompt}|input|label=Ask anything...|class_name=fullwidth|on_action=chat|>
 <|Send Prompt|button|class_name=plain mt1 fullwidth|on_action=chat|>
 |>
@@ -323,7 +328,7 @@ page = """
 |>
 """
 
-Gui(page).run(debug=True, port=5001)
+Gui(page).run(debug=True, port=5001, title="Chatbot Wizard")
 ```
 
 ## Styling With CSS <a name="style"></a>
