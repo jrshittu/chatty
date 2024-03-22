@@ -1,6 +1,4 @@
 ## Creating a Chatbot Wizard With Mistral AI🤖
-![chat](https://github.com/jrshittu/chatty/assets/110542235/5b5cc756-1d6c-4de6-beac-1a1f2f3fd15d)
-
 In this technical article, we will learn how to build a simple chatbot using the Taipy GUI library and the Mistral-7B-Instruct-v0.1-GGUF language model from the ctransformers library. We will walk through the process of loading the language model, generating responses to user prompts, updating the conversation history, and clearing the conversation history. By the end of this article, we will have a basic understanding of how to build a chatbot using these tools.
 
 ## Contents
@@ -333,33 +331,41 @@ Gui(page).run(debug=True, port=5001, title="Chatbot Wizard")
 
 ## Styling With CSS <a name="style"></a>
 Now, let's style our chat ui by floating the response the left and the prompt to the right hand side. 
-![chatty](https://github.com/jrshittu/chatty/assets/110542235/372bf3e7-3fed-44ff-a054-9830ff44aded)
+![chat](https://github.com/jrshittu/chatty/assets/110542235/acb5b187-ddc0-473c-9f69-652f26a5019a)
 
 **Step 1**: Create a CSS file with the same title as the python file and save it in the same directory.
 ```css
 .mistral_mssg td {
-  position: relative;
-  display: inline-block;
-  margin: 10px 10px;
-  padding: 20px;
-  background-color: #ff8c00;
-  border-radius: 20px;
-  max-width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: medium;
-}
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px;
+    padding: 15px;
+    background-color: #ff8c00;
+    border-radius: 20px;
+    max-width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: medium;
+  }
+  
+  .user_mssg td {
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin: 10px 10px;
+    padding: 15px;
+    background-color: #9400D3;
+    border-radius: 20px;
+    max-width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: medium;
+  }
 
-.user_mssg td {
-  position: relative;
-  display: inline-block;
-  float: right;
-  margin: 10px 10px;
-  padding: 20px;
-  background-color: #9400D3;
-  border-radius: 20px;
-  max-width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: medium;
+.flexy{
+    display: flex;
+    justify-content: center;
+    max-width: 50vw;
+    margin: 4em auto;
+    align-items: center;
 }
 ```
 
@@ -386,6 +392,34 @@ To use the `style_conv` function in the Taipy GUI, we need to pass it as the val
 <|{conversation}|table|style=style_conv|show_all|width=100%|rebuild|>
 ```
 
+## Add a Sidebar <a name="sidebar"></a>
+Redefine the page to add the sidebar.
+
+```python
+page = """
+<|layout|columns=300px 1|
+<|part|render=True|class_name=sidebar bg_black|
+# Chat **Wizard**{: .color-primary} # {: .logo-text}
+<|New Chat|button|class_name=fullwidth plain|on_action=clear_conversation|>
+
+### History
+<|{history}|table|show_all|>
+|>
+
+<|part|render=True|class_name=p2 align-item-bottom table|
+<|{conversation}|table|style=style_conv|show_all|width=100%|rebuild|>
+
+<|part|class_name=card mt1|
+<|{prompt}|input|label=Ask anything...|class_name=fullwidth|on_action=chat|>
+<|Send Prompt|button|class_name=plain mt1 fullwidth|on_action=chat|>
+|>
+|>
+|>
+"""
+```
+
+**Output**
+![Screenshot 2024-03-21 112314](https://github.com/jrshittu/chatty/assets/110542235/b819b287-b097-4476-8711-7cb3addb4f37)
 
 ## Conclusion <a name="conc"></a>
 In conclusion, this article demonstrated how to build a simple chatbot using the Taipy GUI library and the Mistral-7B-Instruct-v0.1-GGUF language model from the ctransformers library. The code provided shows how to load the language model, generate responses to user prompts, update the conversation history, and clear the conversation history. The chatbot's UI, built using the Taipy GUI library, provides a user-friendly interface for interacting with the chatbot. Overall, this article provides a useful starting point for building more sophisticated chatbots using these Taipy.
