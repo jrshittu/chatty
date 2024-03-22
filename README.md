@@ -16,6 +16,8 @@ In this technical article, we will learn how to build a simple chatbot using the
 
 [Styling With CSS](#style)
 
+[Add Sidebar](#sidebar)
+
 [Conclusion](#conc)
 
 
