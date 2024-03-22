@@ -238,7 +238,7 @@ def clear_conversation(state):
     state.conversation = {"Conversation": []}
 ```
 
-**Step 4.** Define the layout of the user interface for the Chatbot, Add the logo Image and attach `clear_conversation` to the `New chat` button.
+**Step 4.** Define the layout of the user interface for the Chatbot, Add the logo Image, to do this you need to download the logo and save it in the same directory as the script. Then attach `clear_conversation` to the `New chat` button.
 ![taipee](https://github.com/jrshittu/chatty/assets/110542235/e417fabf-3003-4c33-afdd-274f899113e4)
 
 ```python
