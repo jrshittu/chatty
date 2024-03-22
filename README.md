@@ -198,7 +198,6 @@ Gui(page).run(debug=True)
 ## Mistral AI Chatbot🤖 <a name="bonus"></a>
 
 **Step 1**. In this step, we initialize the `prompt` and `response` and the `conversation`.
-![taipee](https://github.com/jrshittu/chatty/assets/110542235/e417fabf-3003-4c33-afdd-274f899113e4)
 
 ```python
 prompt = ""
@@ -240,6 +239,7 @@ def clear_conversation(state):
 ```
 
 **Step 4.** Define the layout of the user interface for the Chatbot, Add the logo Image and attach `clear_conversation` to the `New chat` button.
+![taipee](https://github.com/jrshittu/chatty/assets/110542235/e417fabf-3003-4c33-afdd-274f899113e4)
 
 ```python
 page = """
